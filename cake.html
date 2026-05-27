@@ -1,50 +1,496 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forest Green Birthday Cake</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:Georgia, serif;
+
+    background:
+    radial-gradient(circle at top, #2e3a3b 0%, #2b3732 45%, #192f2c 100%);
+}
+
+/* TITLE BANNER */
+.title-wrap{
+    position:relative;
+    margin-bottom:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:20;
+}
+
+.banner{
+    position:relative;
+    padding:18px 48px;
+    background:linear-gradient(180deg, #fff9fb, #ffdce8);
+    border:4px solid #6b81d9;
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    transform:rotate(-1deg);
+}
+
+.banner::before,
+.banner::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:70px;
+    height:18px;
+    background:linear-gradient(180deg, #578fc8, #3f729f);
+    transform:translateY(-50%);
+    clip-path:polygon(0 0, 100% 50%, 0 100%);
+}
+
+.banner::before{
+    left:-68px;
+}
+
+.banner::after{
+    right:-68px;
+    transform:translateY(-50%) scaleX(-1);
+}
+
+.banner h1{
+    margin:0;
+    font-family:'Great Vibes', cursive;
+    font-size:52px;
+    line-height:1;
+    color:#088942;
+    text-shadow:0 2px 0 rgba(255,255,255,.7), 0 4px 14px rgba(182,61,99,.18);
+    letter-spacing:1px;
+}
+
+.banner-sub{
+    display:block;
+    text-align:center;
+    margin-top:6px;
+    font-family:'Poppins', sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:3px;
+    color:#065916;
+    text-transform:uppercase;
+}
+
+
+/* ---------------- CAKE ---------------- */
+
+.cake{
+    position:relative;
+    width:320px;
+    height:340px;
+    filter: drop-shadow(0 18px 18px rgba(0,0,0,.25));
+}
+
+/* Bottom Tier */
+
+.tier1{
+    position:absolute;
+    bottom:0;
+    width:320px;
+    height:150px;
+
+    background:
+    linear-gradient(to bottom,
+    #147e30 0%,
+    #0b5d23 50%,
+    #094b23 100%);
+
+    border-radius:24px;
+    overflow:hidden;
+
+    box-shadow:
+    inset 0 -8px 18px rgba(0,0,0,.15),
+    inset 0 8px 10px rgba(255,255,255,.25);
+}
+
+/* Top Tier */
+
+.tier2{
+    position:absolute;
+    bottom:140px;
+    left:60px;
+
+    width:200px;
+    height:120px;
+
+    background:
+    linear-gradient(to bottom,
+    #147e30 0%,
+    #0b5d23 50%,
+    #094b23 100%);
+
+    border-radius:22px;
+    overflow:hidden;
+
+    box-shadow:
+    inset 0 -8px 18px rgba(0,0,0,.15),
+    inset 0 8px 10px rgba(255,255,255,.25);
+}
+
+/* Cream Top */
+
+.cream-top{
+    position:absolute;
+    width:100%;
+    height:30px;
+    top:0;
+    left:0;
+
+    background:
+    linear-gradient(to bottom,#fff,#ffeef3);
+
+    border-radius:20px;
+
+    box-shadow:
+    inset 0 -2px 5px rgba(0,0,0,.08);
+}
+
+/* Dripping Cream */
+
+.drip{
+    position:absolute;
+    width:26px;
+    background:#fff6f8;
+    border-radius:0 0 20px 20px;
+}
+
+.drip1{height:40px; left:30px; top:18px;}
+.drip2{height:55px; left:90px; top:18px;}
+.drip3{height:38px; left:150px; top:18px;}
+.drip4{height:48px; left:230px; top:18px;}
+
+/* Top tier drips */
+
+.drip-small{
+    position:absolute;
+    width:18px;
+    background:#fff6f8;
+    border-radius:0 0 15px 15px;
+}
+
+.sd1{height:30px; left:25px; top:18px;}
+.sd2{height:40px; left:80px; top:18px;}
+.sd3{height:25px; left:145px; top:18px;}
+
+/* Cream Swirls */
+
+.swirl{
+    position:absolute;
+    width:34px;
+    height:34px;
+    background:
+    radial-gradient(circle at 30% 30%, #fff, #ffeef3 70%);
+    border-radius:50%;
+
+    box-shadow:
+    inset -3px -4px 5px rgba(0,0,0,.08),
+    inset 3px 3px 5px rgba(255,255,255,.8);
+}
+
+.s1{bottom:130px; left:15px;}
+.s2{bottom:130px; left:65px;}
+.s3{bottom:130px; left:115px;}
+.s4{bottom:130px; left:165px;}
+.s5{bottom:130px; left:215px;}
+.s6{bottom:130px; left:265px;}
+
+.t1{bottom:250px; left:75px;}
+.t2{bottom:250px; left:125px;}
+.t3{bottom:250px; left:175px;}
+
+/* Cherries */
+
+.cherry{
+    position:absolute;
+    width:16px;
+    height:16px;
+    background:radial-gradient(circle at 30% 30%, #ff9aa2, #c4002f);
+    border-radius:50%;
+    box-shadow:0 2px 4px rgba(0,0,0,.2);
+}
+
+.c1{bottom:255px; left:84px;}
+.c2{bottom:255px; left:184px;}
+
+/* Candles */
+
+.candle{
+    position:absolute;
+    width:16px;
+    height:60px;
+
+    background:
+    repeating-linear-gradient(
+    45deg,
+    #ffffff 0px,
+    #ffffff 6px,
+    #ffd54f 6px,
+    #ffd54f 12px
+    );
+
+    border-radius:5px;
+
+    box-shadow:
+    inset -2px -2px 4px rgba(0,0,0,.15),
+    inset 2px 2px 4px rgba(255,255,255,.8);
+
+    z-index:5;
+}
+
+.candle1{left:92px; bottom:250px;}
+.candle2{left:152px; bottom:260px;}
+.candle3{left:212px; bottom:250px;}
+
+/* Wick */
+
+.wick{
+    position:absolute;
+    width:3px;
+    height:10px;
+    background:#333;
+    top:-8px;
+    left:6px;
+    border-radius:2px;
+}
+
+/* Realistic Flame */
+
+.flame{
+    position:absolute;
+    width:18px;
+    height:28px;
+
+    top:-33px;
+    left:-1px;
+
+    background:
+    radial-gradient(circle at 50% 65%,
+    #fff8b0 0%,
+    #ffd54f 35%,
+    #ff9800 70%,
+    rgba(255,120,0,.1) 100%);
+
+    border-radius:50% 50% 50% 50% / 65% 65% 35% 35%;
+    transform-origin:center bottom;
+
+    animation:flicker .15s infinite alternate;
+
+    box-shadow:
+    0 0 10px #ffcc33,
+    0 0 25px orange,
+    0 0 45px rgba(255,140,0,.5);
+}
+
+/* Flame Inner Core */
+
+.flame::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:12px;
+    background:#fff;
+    border-radius:50%;
+    left:5px;
+    top:6px;
+    opacity:.9;
+}
+
+/* Flicker Animation */
+
+@keyframes flicker{
+    0%{
+        transform:rotate(-2deg) scale(1);
+    }
+    100%{
+        transform:rotate(2deg) scale(1.08);
+    }
+}
+
+/* Pearls */
+
+.pearl{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 8px rgba(255,255,255,.9);
+}
+
+.p1{left:20px; bottom:20px;}
+.p2{left:60px; bottom:20px;}
+.p3{left:100px; bottom:20px;}
+.p4{left:140px; bottom:20px;}
+.p5{left:180px; bottom:20px;}
+.p6{left:220px; bottom:20px;}
+.p7{left:260px; bottom:20px;}
+
+/* Sparkles */
+
+.sparkle{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    animation:sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle{
+    0%,100%{
+        transform:scale(.3);
+        opacity:0;
+    }
+    50%{
+        transform:scale(1.5);
+        opacity:1;
+    }
+}
+
+/* Buttons */
+
+button{
+    margin:10px;
+    padding:12px 26px;
+    border:none;
+    border-radius:10px;
+
+    background:#5c96b8;
+    color:white;
+
+    font-size:16px;
+    cursor:pointer;
+
+    box-shadow:0 5px 10px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+button:hover{
+    background:#5c96b8;
+    transform:translateY(-2px);
+}
+
+</style>
 </head>
+
 <body>
-  <div class="scene">
-    <div class="cake">
-      <div class="plate"></div>
-
-      <div class="tier tier-bottom">
-        <div class="cream-drip"></div>
-        <div class="swirls swirls-bottom"></div>
-      </div>
-
-      <div class="tier tier-top">
-        <div class="cream-drip"></div>
-        <div class="swirls swirls-top"></div>
-      </div>
-
-      <div class="candles">
-        <div class="candle">
-          <span class="wick"></span>
-          <span class="flame"></span>
-        </div>
-        <div class="candle tall">
-          <span class="wick"></span>
-          <span class="flame"></span>
-        </div>
-        <div class="candle">
-          <span class="wick"></span>
-          <span class="flame"></span>
-        </div>
-      </div>
+<div class="title-wrap">
+    <div class="banner">
+        <h1>Happy Birthday Owen Rael</h1>
+        <span class="banner-sub">May All Your Wishs Be FulFilled</span>
     </div>
-  </div>
+</div>
+<div class="cake">
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <!-- Bottom Cake -->
+    <div class="tier1">
+        <div class="cream-top"></div>
 
+        <div class="drip drip1"></div>
+        <div class="drip drip2"></div>
+        <div class="drip drip3"></div>
+        <div class="drip drip4"></div>
+    </div>
+
+    <!-- Top Cake -->
+    <div class="tier2">
+        <div class="cream-top"></div>
+
+        <div class="drip-small sd1"></div>
+        <div class="drip-small sd2"></div>
+        <div class="drip-small sd3"></div>
+    </div>
+
+    <!-- Cream Swirls -->
+    <div class="swirl s1"></div>
+    <div class="swirl s2"></div>
+    <div class="swirl s3"></div>
+    <div class="swirl s4"></div>
+    <div class="swirl s5"></div>
+    <div class="swirl s6"></div>
+
+    <div class="swirl t1"></div>
+    <div class="swirl t2"></div>
+    <div class="swirl t3"></div>
+
+    <!-- Cherries -->
+    <div class="cherry c1"></div>
+    <div class="cherry c2"></div>
+
+    <!-- Candles -->
+    <div class="candle candle1">
+        <div class="wick"></div>
+        <div class="flame"></div>
+    </div>
+
+    <div class="candle candle2">
+        <div class="wick"></div>
+        <div class="flame"></div>
+    </div>
+
+    <div class="candle candle3">
+        <div class="wick"></div>
+        <div class="flame"></div>
+    </div>
+
+    <!-- Pearls -->
+    <div class="pearl p1"></div>
+    <div class="pearl p2"></div>
+    <div class="pearl p3"></div>
+    <div class="pearl p4"></div>
+    <div class="pearl p5"></div>
+    <div class="pearl p6"></div>
+    <div class="pearl p7"></div>
+
+</div>
+
+<button onclick="blowCandles()">Blow Out Candles 🎂</button>
+<button onclick="relightCandles()">Relight Candles ✨</button>
 
 <script>
-    document.querySelectorAll(".flame").forEach((flame, index) => {
-  flame.style.animationDelay = `${index * 0.12}s, ${index * 0.18}s`;
-});
+
+function blowCandles(){
+
+    document.querySelectorAll('.flame').forEach(flame=>{
+        flame.style.display='none';
+    });
+
+    for(let i=0;i<45;i++){
+
+        const sparkle=document.createElement('div');
+
+        sparkle.className='sparkle';
+
+        sparkle.style.left=Math.random()*window.innerWidth+'px';
+        sparkle.style.top=Math.random()*window.innerHeight+'px';
+
+        document.body.appendChild(sparkle);
+
+        setTimeout(()=>{
+            sparkle.remove();
+        },2000);
+    }
+}
+
+function relightCandles(){
+    document.querySelectorAll('.flame').forEach(flame=>{
+        flame.style.display='block';
+    });
+}
+
 </script>
+
+</body>
+</html>
