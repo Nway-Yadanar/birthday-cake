@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forest Green Birthday Cake</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scene">
+    <div class="cake">
+      <div class="plate"></div>
+
+      <div class="tier tier-bottom">
+        <div class="cream-drip"></div>
+        <div class="swirls swirls-bottom"></div>
+      </div>
+
+      <div class="tier tier-top">
+        <div class="cream-drip"></div>
+        <div class="swirls swirls-top"></div>
+      </div>
+
+      <div class="candles">
+        <div class="candle">
+          <span class="wick"></span>
+          <span class="flame"></span>
+        </div>
+        <div class="candle tall">
+          <span class="wick"></span>
+          <span class="flame"></span>
+        </div>
+        <div class="candle">
+          <span class="wick"></span>
+          <span class="flame"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+    document.querySelectorAll(".flame").forEach((flame, index) => {
+  flame.style.animationDelay = `${index * 0.12}s, ${index * 0.18}s`;
+});
+</script>
